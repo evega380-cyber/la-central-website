@@ -1,13 +1,14 @@
-# La Central — Homepage V1
+# La Central — Homepage V3
 
-Static responsive homepage prototype for Central Goldenrod.
+Live website prototype for Iglesia Central Goldenrod.
 
-## Run locally
-Open `index.html` in a browser, or run a simple local web server from this folder.
+## V3 additions
+- Official CG logo
+- Real La Central hero video
+- Church vision: Anuncia · Alcanza · Restaura · Discipula
+- Real service schedule
+- Church address and Google Maps directions
+- Facebook, Instagram, and YouTube links
+- Church Center / Planning Center calls to action
 
-## Current integration
-Buttons route to the existing Church Center home. Event cards are placeholders prepared for a future Planning Center API integration.
-
-## Brand direction
-Navy/black, white, bright yellow/gold, electric blue, bold condensed typography, and the church vision:
-“Una iglesia que anuncia, alcanza, restaura y discipula.”
+Next phase: Planning Center API integration for live events and registrations.
