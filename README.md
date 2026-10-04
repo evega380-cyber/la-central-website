@@ -1,14 +1,6 @@
-# La Central — Homepage V3
+# La Central Website — Homepage V4
 
-Live website prototype for Iglesia Central Goldenrod.
+V4 refines the opening experience with a full-screen cinematic hero, larger official Central Goldenrod branding, responsive overlay typography, rotating vision words, and a hero video slowed to 72% playback speed.
 
-## V3 additions
-- Official CG logo
-- Real La Central hero video
-- Church vision: Anuncia · Alcanza · Restaura · Discipula
-- Real service schedule
-- Church address and Google Maps directions
-- Facebook, Instagram, and YouTube links
-- Church Center / Planning Center calls to action
-
-Next phase: Planning Center API integration for live events and registrations.
+## Deploy
+Upload/replace these files in the GitHub repository. Railway will redeploy automatically from `main`.
