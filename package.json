@@ -1,0 +1,8 @@
+{
+  "name": "la-central-website",
+  "version": "5.0.0",
+  "private": true,
+  "description": "Central Goldenrod public website with server-side Planning Center integration",
+  "scripts": {"start": "node server.js"},
+  "engines": {"node": ">=18"}
+}
