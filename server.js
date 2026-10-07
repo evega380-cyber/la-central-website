@@ -73,7 +73,13 @@ const mime = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8
 const server = http.createServer(async (req,res) => {
   const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   if (url.pathname.startsWith('/api/')) return api(req,res,url);
-  let rel = decodeURIComponent(url.pathname === '/' ? '/index.html' : url.pathname);
+  let pathname = url.pathname;
+
+if (pathname === '/raices' || pathname === '/raices/') {
+  pathname = '/raices/index.html';
+}
+
+let rel = decodeURIComponent(pathname === '/' ? '/index.html' : pathname);
   const file = path.normalize(path.join(ROOT, rel));
   if (!file.startsWith(ROOT)) { res.writeHead(403); return res.end('Forbidden'); }
   fs.stat(file, (err, stat) => {
