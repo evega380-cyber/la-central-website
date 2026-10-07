@@ -1,1 +1,373 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Recursos | Raíces</title><link rel="stylesheet" href="raices.css"><style>.lessonhero{min-height:48vh;padding:90px 7vw;display:flex;align-items:end;background:linear-gradient(90deg,#172214ee,#17221488),url('source.png') center/cover;color:white}.lessonhero div{max-width:850px}.lessonhero h1{font-family:'Playfair Display',serif;font-size:clamp(48px,7vw,94px);line-height:.95;margin:12px 0}.lessonbody{max-width:1000px;margin:auto;padding:80px 6vw}.lessonbody h2{font-family:'Playfair Display',serif;font-size:44px}.video{aspect-ratio:16/9;background:#202a1c;border:1px solid #566047;display:grid;place-items:center;color:#d8ddce;margin:35px 0}.video div{text-align:center}.video b{display:block;font-family:'Playfair Display',serif;font-size:32px;margin:10px}.next{display:flex;justify-content:space-between;gap:20px;border-top:1px solid #c9bea6;padding-top:35px;margin-top:55px}@media(max-width:600px){.next{flex-direction:column}}</style></head><body><header><a class="back" href="/">← La Central</a><a href="index.html"><img src="raices-logo.png" alt="Raíces"></a><nav><a href="index.html#camino">Tu camino</a><a href="index.html#disciplinas">Disciplinas</a><a href="recursos.html">Recursos</a></nav></header><section class="lessonhero"><div><span class="eyebrow">Biblioteca Raíces</span><h1>Recursos</h1><p>Este espacio reunirá materiales, guías y recursos que complementan cada etapa de Raíces.</p></div></section><main class="lessonbody"><span class="eyebrow">Biblioteca Raíces</span><h2>Herramientas para tu camino</h2><p>Este espacio reunirá materiales, guías y recursos que complementan cada etapa de Raíces.</p><div class="video"><div>▶<b>Video próximamente</b><span>Este espacio está listo para el video de Recursos.</span></div></div><p>Los materiales y recursos de esta lección aparecerán aquí. Cuando incorporemos los videos de Raíces, esta página conservará la misma estructura y navegación.</p><div class="next"><a class="outline" href="index.html#disciplinas">← TODAS LAS LECCIONES</a><a class="btn" href="index.html#camino">CONTINUAR MI CAMINO →</a></div></main><footer><img src="raices-logo.png"><p>Raíces · Central Goldenrod</p><a href="/">Volver a La Central</a></footer></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Recursos | Raíces</title>
+
+<link rel="stylesheet" href="raices.css">
+
+<style>
+
+.lessonhero{
+  min-height:48vh;
+  padding:90px 7vw;
+  display:flex;
+  align-items:end;
+  background:linear-gradient(90deg,#172214,#172214d9);
+  color:white;
+}
+
+.lessonhero div{
+  max-width:850px;
+}
+
+.lessonhero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(48px,7vw,94px);
+  line-height:.95;
+  margin:12px 0;
+}
+
+.lessonbody{
+  max-width:1100px;
+  margin:auto;
+  padding:80px 6vw;
+}
+
+.lessonbody h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(38px,5vw,58px);
+  margin:12px 0 18px;
+}
+
+.intro-copy{
+  max-width:780px;
+  font-size:18px;
+  line-height:1.75;
+  color:#5f654f;
+}
+
+/* MUSIC SECTION */
+
+.music-section{
+  margin-top:65px;
+}
+
+.music-heading{
+  text-align:center;
+  max-width:760px;
+  margin:0 auto 40px;
+}
+
+.music-heading h3{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(34px,4vw,50px);
+  margin:10px 0 15px;
+}
+
+.music-heading p{
+  font-size:17px;
+  line-height:1.7;
+  color:#5f654f;
+}
+
+.playlists{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+
+.playlist{
+  background:#1f2b1b;
+  color:#f5efe3;
+  padding:40px;
+  min-height:300px;
+  border-top:4px solid #a7b667;
+  display:flex;
+  flex-direction:column;
+}
+
+.playlist small{
+  color:#c7a86b;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.18em;
+}
+
+.playlist h4{
+  font-family:'Playfair Display',serif;
+  font-size:34px;
+  margin:16px 0;
+}
+
+.playlist p{
+  color:#cbd0c2;
+  line-height:1.7;
+  margin:0 0 25px;
+}
+
+.music-btn{
+  display:inline-block;
+  margin-top:auto;
+  align-self:flex-start;
+  padding:15px 20px;
+  background:#a7b667;
+  color:#182015;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.08em;
+  border-radius:3px;
+  transition:.2s;
+}
+
+.music-btn:hover{
+  transform:translateY(-2px);
+  background:#b6c77a;
+}
+
+/* MORE RESOURCES */
+
+.more-resources{
+  margin-top:75px;
+  padding:45px;
+  background:#e5dcc8;
+  border:1px solid #c9bea6;
+  text-align:center;
+}
+
+.more-resources h3{
+  font-family:'Playfair Display',serif;
+  font-size:34px;
+  margin:8px 0 12px;
+}
+
+.more-resources p{
+  max-width:650px;
+  margin:0 auto;
+  line-height:1.7;
+  color:#5f654f;
+}
+
+.next{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  border-top:1px solid #c9bea6;
+  padding-top:35px;
+  margin-top:65px;
+}
+
+@media(max-width:700px){
+
+  .playlists{
+    grid-template-columns:1fr;
+  }
+
+  .playlist{
+    min-height:280px;
+    padding:30px;
+  }
+
+  .next{
+    flex-direction:column;
+  }
+
+  .more-resources{
+    padding:30px 22px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<a class="back" href="/">
+← La Central
+</a>
+
+<a href="index.html">
+<img src="raices-logo.png" alt="Raíces">
+</a>
+
+<nav>
+<a href="index.html#camino">Tu camino</a>
+<a href="index.html#disciplinas">Disciplinas</a>
+<a href="recursos.html">Recursos</a>
+</nav>
+
+</header>
+
+
+<section class="lessonhero">
+
+<div>
+
+<span class="eyebrow">
+BIBLIOTECA RAÍCES
+</span>
+
+<h1>Recursos</h1>
+
+<p>
+Herramientas y materiales que pueden acompañarte mientras
+conoces a Jesús y continúas creciendo en tu nueva vida con Dios.
+</p>
+
+</div>
+
+</section>
+
+
+<main class="lessonbody">
+
+<span class="eyebrow">
+BIBLIOTECA RAÍCES
+</span>
+
+<h2>
+Herramientas para tu camino
+</h2>
+
+<p class="intro-copy">
+Raíces no termina cuando termina una lección.
+Aquí encontrarás recursos adicionales que pueden ayudarte
+a seguir aprendiendo, buscando a Dios y estableciendo
+fundamentos firmes en tu fe.
+</p>
+
+
+<section class="music-section">
+
+<div class="music-heading">
+
+<span class="eyebrow">
+MÚSICA PARA TU CAMINAR
+</span>
+
+<h3>
+Canciones que pueden acompañarte
+</h3>
+
+<p>
+Hemos preparado estas listas de canciones que creemos pueden
+ayudarte mientras comienzas tu caminar con Dios.
+Que cada canción sea una oportunidad para acercarte a Él,
+reflexionar y crecer en tu fe.
+</p>
+
+</div>
+
+
+<div class="playlists">
+
+<article class="playlist">
+
+<small>
+MÚSICA
+</small>
+
+<h4>
+Música en Español
+</h4>
+
+<p>
+Una selección de canciones de adoración y música cristiana
+para acompañarte en tus momentos con Dios.
+</p>
+
+<a
+class="music-btn"
+href="https://music.youtube.com/playlist?list=PLDKCodclKokc&si=NOZUQGjsE34XzO9d"
+target="_blank"
+rel="noopener noreferrer">
+ESCUCHAR EN YOUTUBE MUSIC →
+</a>
+
+</article>
+
+
+<article class="playlist">
+
+<small>
+MUSIC
+</small>
+
+<h4>
+Music in English
+</h4>
+
+<p>
+A collection of worship and Christian songs to encourage you
+as you begin and continue your walk with God.
+</p>
+
+<a
+class="music-btn"
+href="https://music.youtube.com/playlist?list=PLI_8d_vRxq6E&si=8NdfjOmu14TcaVeH"
+target="_blank"
+rel="noopener noreferrer">
+LISTEN ON YOUTUBE MUSIC →
+</a>
+
+</article>
+
+</div>
+
+</section>
+
+
+<section class="more-resources">
+
+<span class="eyebrow">
+PRÓXIMAMENTE
+</span>
+
+<h3>
+Seguiremos añadiendo recursos
+</h3>
+
+<p>
+Esta biblioteca continuará creciendo con materiales,
+guías y herramientas que complementen tu camino en Raíces.
+</p>
+
+</section>
+
+
+<div class="next">
+
+<a class="outline" href="index.html#disciplinas">
+← DISCIPLINAS
+</a>
+
+<a class="btn" href="index.html#camino">
+VOLVER A MI CAMINO →
+</a>
+
+</div>
+
+</main>
+
+
+<footer>
+
+<img src="raices-logo.png" alt="Raíces">
+
+<p>
+Raíces · Central Goldenrod
+</p>
+
+<a href="/">
+Volver a La Central
+</a>
+
+</footer>
+
+</body>
+</html>
