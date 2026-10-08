@@ -1,373 +1,432 @@
+
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Recursos | Raíces</title>
+  <title>Recursos | Raíces</title>
+  <link rel="stylesheet" href="raices.css">
 
-<link rel="stylesheet" href="raices.css">
+  <style>
+    .lessonhero {
+      min-height: 48vh;
+      padding: 90px 7vw;
+      display: flex;
+      align-items: end;
+      background: linear-gradient(90deg, #172214, #172214d9);
+      color: white;
+    }
 
-<style>
+    .lessonhero div { max-width: 850px; }
 
-.lessonhero{
-  min-height:48vh;
-  padding:90px 7vw;
-  display:flex;
-  align-items:end;
-  background:linear-gradient(90deg,#172214,#172214d9);
-  color:white;
-}
+    .lessonhero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(48px, 7vw, 94px);
+      line-height: .95;
+      margin: 12px 0;
+    }
 
-.lessonhero div{
-  max-width:850px;
-}
+    .lessonbody {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 6vw;
+    }
 
-.lessonhero h1{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(48px,7vw,94px);
-  line-height:.95;
-  margin:12px 0;
-}
+    .lessonbody h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 5vw, 58px);
+      margin: 12px 0 18px;
+    }
 
-.lessonbody{
-  max-width:1100px;
-  margin:auto;
-  padding:80px 6vw;
-}
+    .intro-copy {
+      max-width: 780px;
+      font-size: 18px;
+      line-height: 1.75;
+      color: #5f654f;
+    }
 
-.lessonbody h2{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(38px,5vw,58px);
-  margin:12px 0 18px;
-}
+    .music-section,
+    .guides-section {
+      margin-top: 65px;
+    }
 
-.intro-copy{
-  max-width:780px;
-  font-size:18px;
-  line-height:1.75;
-  color:#5f654f;
-}
+    .section-heading {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 40px;
+    }
 
-/* MUSIC SECTION */
+    .section-heading h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(34px, 4vw, 50px);
+      margin: 10px 0 15px;
+    }
 
-.music-section{
-  margin-top:65px;
-}
+    .section-heading p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #5f654f;
+    }
 
-.music-heading{
-  text-align:center;
-  max-width:760px;
-  margin:0 auto 40px;
-}
+    .playlists,
+    .guide-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
 
-.music-heading h3{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(34px,4vw,50px);
-  margin:10px 0 15px;
-}
+    .playlist {
+      background: #1f2b1b;
+      color: #f5efe3;
+      padding: 40px;
+      min-height: 300px;
+      border-top: 4px solid #a7b667;
+      display: flex;
+      flex-direction: column;
+    }
 
-.music-heading p{
-  font-size:17px;
-  line-height:1.7;
-  color:#5f654f;
-}
+    .playlist small {
+      color: #c7a86b;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .18em;
+    }
 
-.playlists{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:24px;
-}
+    .playlist h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      margin: 16px 0;
+    }
 
-.playlist{
-  background:#1f2b1b;
-  color:#f5efe3;
-  padding:40px;
-  min-height:300px;
-  border-top:4px solid #a7b667;
-  display:flex;
-  flex-direction:column;
-}
+    .playlist p {
+      color: #cbd0c2;
+      line-height: 1.7;
+      margin: 0 0 25px;
+    }
 
-.playlist small{
-  color:#c7a86b;
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.18em;
-}
+    .music-btn {
+      display: inline-block;
+      margin-top: auto;
+      align-self: flex-start;
+      padding: 15px 20px;
+      background: #a7b667;
+      color: #182015;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: .2s;
+    }
 
-.playlist h4{
-  font-family:'Playfair Display',serif;
-  font-size:34px;
-  margin:16px 0;
-}
+    .music-btn:hover {
+      transform: translateY(-2px);
+      background: #b6c77a;
+    }
 
-.playlist p{
-  color:#cbd0c2;
-  line-height:1.7;
-  margin:0 0 25px;
-}
+    .guide-card {
+      background: #f3efe4;
+      border: 1px solid #d9cfb9;
+      border-top: 4px solid #a7b667;
+      padding: 35px;
+      display: flex;
+      flex-direction: column;
+    }
 
-.music-btn{
-  display:inline-block;
-  margin-top:auto;
-  align-self:flex-start;
-  padding:15px 20px;
-  background:#a7b667;
-  color:#182015;
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:.08em;
-  border-radius:3px;
-  transition:.2s;
-}
+    .guide-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      margin: 14px 0;
+      color: #26321f;
+    }
 
-.music-btn:hover{
-  transform:translateY(-2px);
-  background:#b6c77a;
-}
+    .guide-card p {
+      color: #5f654f;
+      line-height: 1.75;
+      margin-bottom: 25px;
+    }
 
-/* MORE RESOURCES */
+    .guide-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: auto;
+    }
 
-.more-resources{
-  margin-top:75px;
-  padding:45px;
-  background:#e5dcc8;
-  border:1px solid #c9bea6;
-  text-align:center;
-}
+    .guide-actions a {
+      display: block;
+      padding: 15px 18px;
+      background: #24351e;
+      color: white;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-decoration: none;
+      border-radius: 4px;
+    }
 
-.more-resources h3{
-  font-family:'Playfair Display',serif;
-  font-size:34px;
-  margin:8px 0 12px;
-}
+    .guide-actions a:hover {
+      background: #405a34;
+    }
 
-.more-resources p{
-  max-width:650px;
-  margin:0 auto;
-  line-height:1.7;
-  color:#5f654f;
-}
+    .more-resources {
+      margin-top: 75px;
+      padding: 45px;
+      background: #e5dcc8;
+      border: 1px solid #c9bea6;
+      text-align: center;
+    }
 
-.next{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  border-top:1px solid #c9bea6;
-  padding-top:35px;
-  margin-top:65px;
-}
+    .more-resources h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      margin: 8px 0 12px;
+    }
 
-@media(max-width:700px){
+    .more-resources p {
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.7;
+      color: #5f654f;
+    }
 
-  .playlists{
-    grid-template-columns:1fr;
-  }
+    .next {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-top: 1px solid #c9bea6;
+      padding-top: 35px;
+      margin-top: 65px;
+    }
 
-  .playlist{
-    min-height:280px;
-    padding:30px;
-  }
+    @media (max-width: 700px) {
+      .playlists,
+      .guide-grid {
+        grid-template-columns: 1fr;
+      }
 
-  .next{
-    flex-direction:column;
-  }
+      .playlist {
+        min-height: 280px;
+        padding: 30px;
+      }
 
-  .more-resources{
-    padding:30px 22px;
-  }
+      .guide-card {
+        padding: 26px;
+      }
 
-}
+      .next {
+        flex-direction: column;
+      }
 
-</style>
+      .more-resources {
+        padding: 30px 22px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
+  <header>
+    <a class="back"
+       href="https://la-central-website-production.up.railway.app/">
+      ← La Central
+    </a>
 
-<a class="back" href="/">
-← La Central
-</a>
+    <a href="index.html">
+      <img src="raices-logo.png" alt="Raíces">
+    </a>
 
-<a href="index.html">
-<img src="raices-logo.png" alt="Raíces">
-</a>
+    <nav>
+      <a href="index.html#camino">Tu camino</a>
+      <a href="index.html#disciplinas">Disciplinas</a>
+      <a href="recursos.html">Recursos</a>
+    </nav>
+  </header>
 
-<nav>
-<a href="index.html#camino">Tu camino</a>
-<a href="index.html#disciplinas">Disciplinas</a>
-<a href="recursos.html">Recursos</a>
-</nav>
+  <section class="lessonhero">
+    <div>
+      <span class="eyebrow">BIBLIOTECA RAÍCES</span>
+      <h1>Recursos</h1>
 
-</header>
+      <p>
+        Herramientas y materiales que pueden acompañarte
+        mientras conoces a Jesús y continúas creciendo
+        en tu nueva vida con Dios.
+      </p>
+    </div>
+  </section>
 
+  <main class="lessonbody">
 
-<section class="lessonhero">
+    <span class="eyebrow">BIBLIOTECA RAÍCES</span>
+    <h2>Herramientas para tu camino</h2>
 
-<div>
+    <p class="intro-copy">
+      Raíces no termina cuando termina una lección.
+      Aquí encontrarás recursos adicionales que pueden
+      ayudarte a seguir aprendiendo, buscando a Dios
+      y estableciendo fundamentos firmes en tu fe.
+    </p>
 
-<span class="eyebrow">
-BIBLIOTECA RAÍCES
-</span>
+    <!-- Bilingual resource guides -->
+    <section class="guides-section">
 
-<h1>Recursos</h1>
+      <div class="section-heading">
+        <span class="eyebrow">GUÍAS PARA CRECER</span>
+        <h3>Recursos para tu vida espiritual</h3>
+        <p>
+          Explora estas herramientas prácticas para
+          fortalecer tu relación con Dios y aprender
+          a estudiar Su Palabra.
+        </p>
+      </div>
 
-<p>
-Herramientas y materiales que pueden acompañarte mientras
-conoces a Jesús y continúas creciendo en tu nueva vida con Dios.
-</p>
+      <div class="guide-grid">
 
-</div>
+        <article class="guide-card">
+          <span class="eyebrow">VIDA DEVOCIONAL</span>
+          <h4>¿Cómo Hacer un Devocional?</h4>
 
-</section>
+          <p>
+            Una guía sencilla para desarrollar un tiempo
+            diario con Dios. Aprende a alabar, adorar,
+            leer, meditar, escribir, orar y aplicar
+            la Palabra a tu vida.
+          </p>
 
+          <div class="guide-actions">
+            <a href="guia-devocional-es.pdf"
+               target="_blank" rel="noopener">
+              VER GUÍA EN ESPAÑOL ↗
+            </a>
 
-<main class="lessonbody">
+            <a href="devotional-guide-en.pdf"
+               target="_blank" rel="noopener">
+              VIEW GUIDE IN ENGLISH ↗
+            </a>
+          </div>
+        </article>
 
-<span class="eyebrow">
-BIBLIOTECA RAÍCES
-</span>
+        <article class="guide-card">
+          <span class="eyebrow">HERRAMIENTAS DIGITALES</span>
+          <h4>Apps de la Biblia y Recursos Cristianos</h4>
 
-<h2>
-Herramientas para tu camino
-</h2>
+          <p>
+            Descubre aplicaciones y herramientas en línea
+            que pueden ayudarte a leer, comparar,
+            comprender y estudiar las Escrituras
+            mientras continúas creciendo en tu fe.
+          </p>
 
-<p class="intro-copy">
-Raíces no termina cuando termina una lección.
-Aquí encontrarás recursos adicionales que pueden ayudarte
-a seguir aprendiendo, buscando a Dios y estableciendo
-fundamentos firmes en tu fe.
-</p>
+          <div class="guide-actions">
+            <a href="apps-biblia-recursos-es.pdf"
+               target="_blank" rel="noopener">
+              VER GUÍA EN ESPAÑOL ↗
+            </a>
 
+            <a href="bible-apps-resources-en.pdf"
+               target="_blank" rel="noopener">
+              VIEW GUIDE IN ENGLISH ↗
+            </a>
+          </div>
+        </article>
 
-<section class="music-section">
+      </div>
+    </section>
 
-<div class="music-heading">
+    <!-- Music playlists -->
+    <section class="music-section">
 
-<span class="eyebrow">
-MÚSICA PARA TU CAMINAR
-</span>
+      <div class="section-heading">
+        <span class="eyebrow">MÚSICA PARA TU CAMINAR</span>
+        <h3>Canciones que pueden acompañarte</h3>
 
-<h3>
-Canciones que pueden acompañarte
-</h3>
+        <p>
+          Hemos preparado estas listas de canciones que
+          creemos pueden ayudarte mientras comienzas
+          tu caminar con Dios. Que cada canción sea
+          una oportunidad para acercarte a Él,
+          reflexionar y crecer en tu fe.
+        </p>
+      </div>
 
-<p>
-Hemos preparado estas listas de canciones que creemos pueden
-ayudarte mientras comienzas tu caminar con Dios.
-Que cada canción sea una oportunidad para acercarte a Él,
-reflexionar y crecer en tu fe.
-</p>
+      <div class="playlists">
 
-</div>
+        <article class="playlist">
+          <small>MÚSICA</small>
+          <h4>Música en Español</h4>
 
+          <p>
+            Una selección de canciones de adoración
+            y música cristiana para acompañarte
+            en tus momentos con Dios.
+          </p>
 
-<div class="playlists">
+          <a class="music-btn"
+             href="https://music.youtube.com/playlist?list=PLI_8d_vRxq6E&amp;si=8NdfjOmu14TcaVeH"
+             target="_blank"
+             rel="noopener noreferrer">
+            ESCUCHAR EN YOUTUBE MUSIC →
+          </a>
+        </article>
 
-<article class="playlist">
+        <article class="playlist">
+          <small>MUSIC</small>
+          <h4>Music in English</h4>
 
-<small>
-MÚSICA
-</small>
+          <p>
+            A collection of worship and Christian
+            songs to encourage you as you begin
+            and continue your walk with God.
+          </p>
 
-<h4>
-Música en Español
-</h4>
+          <a class="music-btn"
+             href="https://music.youtube.com/playlist?list=PLDKCodclKokc&amp;si=NOZUQGjsE34XzO9d"
+             target="_blank"
+             rel="noopener noreferrer">
+            LISTEN ON YOUTUBE MUSIC →
+          </a>
+        </article>
 
-<p>
-Una selección de canciones de adoración y música cristiana
-para acompañarte en tus momentos con Dios.
-</p>
+      </div>
+    </section>
 
-<a
-class="music-btn"
-href="https://music.youtube.com/playlist?list=PLI_8d_vRxq6E&si=8NdfjOmu14TcaVeH"
-target="_blank"
-rel="noopener noreferrer">
-ESCUCHAR EN YOUTUBE MUSIC →
-</a>
+    <!-- Future resources -->
+    <section class="more-resources">
+      <span class="eyebrow">PRÓXIMAMENTE</span>
+      <h3>Seguiremos añadiendo recursos</h3>
 
-</article>
+      <p>
+        Esta biblioteca continuará creciendo con
+        materiales, guías y herramientas que
+        complementen tu camino en Raíces.
+      </p>
+    </section>
 
+    <!-- Navigation -->
+    <div class="next">
+      <a class="outline" href="index.html#disciplinas">
+        ← DISCIPLINAS
+      </a>
 
-<article class="playlist">
+      <a class="btn" href="index.html#camino">
+        VOLVER A MI CAMINO →
+      </a>
+    </div>
 
-<small>
-MUSIC
-</small>
+  </main>
 
-<h4>
-Music in English
-</h4>
+  <footer>
+    <img src="raices-logo.png" alt="Raíces">
+    <p>Raíces · Central Goldenrod</p>
 
-<p>
-A collection of worship and Christian songs to encourage you
-as you begin and continue your walk with God.
-</p>
-
-<a
-class="music-btn"
-href="https://music.youtube.com/playlist?list=PLDKCodclKokc&si=NOZUQGjsE34XzO9d"
-target="_blank"
-rel="noopener noreferrer">
-LISTEN ON YOUTUBE MUSIC →
-</a>
-
-</article>
-
-</div>
-
-</section>
-
-
-<section class="more-resources">
-
-<span class="eyebrow">
-PRÓXIMAMENTE
-</span>
-
-<h3>
-Seguiremos añadiendo recursos
-</h3>
-
-<p>
-Esta biblioteca continuará creciendo con materiales,
-guías y herramientas que complementen tu camino en Raíces.
-</p>
-
-</section>
-
-
-<div class="next">
-
-<a class="outline" href="index.html#disciplinas">
-← DISCIPLINAS
-</a>
-
-<a class="btn" href="index.html#camino">
-VOLVER A MI CAMINO →
-</a>
-
-</div>
-
-</main>
-
-
-<footer>
-
-<img src="raices-logo.png" alt="Raíces">
-
-<p>
-Raíces · Central Goldenrod
-</p>
-
-<a href="/">
-Volver a La Central
-</a>
-
-</footer>
+    <a href="https://la-central-website-production.up.railway.app/">
+      Volver a La Central
+    </a>
+  </footer>
 
 </body>
 </html>
