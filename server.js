@@ -28,7 +28,40 @@ async function pcoFetch(endpoint) {
   return response.json();
 }
 
-async function api(req, res, url) {
+async function api(req, res, url) 
+if (url.pathname === '/api/planning-center/category-test') {
+  try {
+    const payload = await pcoFetch(
+      '/registrations/v2/signups/3946980'
+    );
+
+    const signup = payload.data || {};
+
+    return json(res, 200, {
+      id: signup.id,
+      name: signup.attributes?.name,
+      open: signup.attributes?.open,
+      closed: signup.attributes?.closed,
+      archived: signup.attributes?.archived,
+      attributes: Object.keys(signup.attributes || {}),
+      relationships: signup.relationships || {},
+      links: signup.links || {},
+      included: (payload.included || []).map(item => ({
+        type: item.type,
+        id: item.id,
+        name: item.attributes?.name
+      }))
+    });
+  } catch (e) {
+    console.error('Category test error:', e.message);
+
+    return json(res, 502, {
+      error: 'Unable to inspect registration category',
+      status: e.status || null
+    });
+  }
+}
+{
   
   if (url.pathname === '/api/planning-center/featured-test') {
     try {
