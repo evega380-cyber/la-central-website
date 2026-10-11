@@ -25,3 +25,193 @@
 
 /* V5 — Planning Center live events */
 .pco-status{margin-top:1rem;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.72}.pco-status.connected{opacity:1}.event-cards{grid-template-columns:repeat(3,minmax(0,1fr))}.event-card{position:relative;overflow:hidden;min-height:330px;display:flex;flex-direction:column;justify-content:flex-end;background:#0a1a2b}.event-card.has-image{background-size:cover;background-position:center}.event-card.has-image:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,15,27,.15),rgba(4,15,27,.96))}.event-card>*{position:relative;z-index:1}.event-date{color:#ffd51f;font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.event-card h3{margin:.45rem 0 .65rem}.event-meta{font-size:.88rem;opacity:.82}.event-card .text-link{margin-top:1rem;color:#ffd51f}.events-footer{margin-top:2rem}.event-empty{grid-column:1/-1}.event-loading{grid-column:1/-1}@media(max-width:900px){.event-cards{grid-template-columns:1fr}}
+
+
+/* =====================================
+   LA CENTRAL - REGISTRATION SLIDESHOW
+   ===================================== */
+
+.registration-slider {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 35px auto 0;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #0b2038;
+  color: #ffffff;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+}
+
+.registration-slides {
+  position: relative;
+  min-height: 400px;
+}
+
+.registration-slide {
+  display: none;
+  position: relative;
+  min-height: 400px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 65px 45px;
+  background-color: #0b2038;
+  background-size: cover;
+  background-position: center;
+}
+
+.registration-slide.active {
+  display: flex;
+  animation: registrationFade 0.7s ease;
+}
+
+.registration-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(6, 19, 33, 0.94),
+    rgba(6, 19, 33, 0.68)
+  );
+}
+
+.registration-slide-content {
+  position: relative;
+  z-index: 1;
+  max-width: 750px;
+}
+
+.registration-slide-label {
+  display: block;
+  color: #e8bc55;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+.registration-slide h3 {
+  color: #ffffff;
+  font-family: "Anton", sans-serif;
+  font-size: clamp(30px, 5vw, 58px);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0 0 20px;
+  text-transform: uppercase;
+}
+
+.registration-slide p {
+  color: #e1e8f0;
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.registration-slide .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.registration-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 18px;
+  background: #08182b;
+}
+
+.registration-controls[hidden] {
+  display: none;
+}
+
+.registration-controls button {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+}
+
+.registration-controls button:hover {
+  background: #e8bc55;
+  color: #061321;
+}
+
+.registration-dots {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.registration-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #8290a2;
+  cursor: pointer;
+}
+
+.registration-dot.active {
+  background: #e8bc55;
+}
+
+.registration-loading,
+.registration-empty {
+  color: #ffffff;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.registration-footer {
+  text-align: center;
+  margin-top: 30px;
+}
+
+@keyframes registrationFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .registration-slider {
+    border-radius: 14px;
+  }
+
+  .registration-slides,
+  .registration-slide {
+    min-height: 340px;
+  }
+
+  .registration-slide {
+    padding: 45px 24px;
+  }
+
+  .registration-slide h3 {
+    font-size: 34px;
+  }
+
+  .registration-slide p {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .registration-slide.active {
+    animation: none;
+  }
+}
