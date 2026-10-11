@@ -94,6 +94,65 @@ function mapRegistration(item) {
 
 async function api(req, res, url) {
 
+if (url.pathname === "/api/website-registrations") {
+  try {
+    const WEBSITE_CATEGORY_ID = "111364";
+    const featured = [];
+    let nextPath = "/registrations/v2/signups?per_page=100";
+    let pagesChecked = 0;
+
+    while (nextPath && pagesChecked < 20) {
+      const payload = await pcoFetch(nextPath);
+      pagesChecked++;
+
+      const signups = payload.data || [];
+
+      for (const signup of signups) {
+        const a = signup.attributes || {};
+
+        if (a.archived || a.closed || !a.open) continue;
+
+        const categories = await pcoFetch(
+          `/registrations/v2/signups/${signup.id}/categories`
+        );
+
+        const onWebsite = (categories.data || []).some(
+          category => String(category.id) === WEBSITE_CATEGORY_ID
+        );
+
+        if (!onWebsite) continue;
+
+        featured.push({
+          id: signup.id,
+          title: a.name,
+          description: a.description || "",
+          image: a.logo_url || null,
+          url: a.new_registration_url ||
+            `https://iddpmi093.churchcenter.com/registrations/events/${signup.id}`
+        });
+      }
+
+      const nextUrl = payload.links?.next;
+      if (nextUrl) {
+        const parsed = new URL(nextUrl);
+        nextPath = parsed.pathname + parsed.search;
+      } else {
+        nextPath = null;
+      }
+    }
+
+    return json(res, 200, {
+      registrations: featured.slice(0, 3)
+    });
+
+  } catch (error) {
+    console.error("Website registrations:", error.message);
+    return json(res, 502, {
+      error: "Unable to load website registrations"
+    });
+  }
+}
+
 if (url.pathname === "/api/planning-center/website-category-test") {
   try {
     const payload = await pcoFetch(
