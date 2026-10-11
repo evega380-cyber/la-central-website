@@ -66,6 +66,72 @@ async function api(req, res, url) {
       return json(res, 502, { events: [], error: e.status === 401 ? 'Authentication failed' : 'Events are temporarily unavailable' });
     }
   }
+  
+  if (url.pathname === '/api/featured-events') {
+    try {
+      const payload = await pcoFetch(
+        '/calendar/v2/event_instances?filter=future&order=starts_at&per_page=100&include=event'
+      );
+
+      const featuredEvents = new Map(
+        (payload.included || [])
+          .filter(item =>
+            item.type === 'Event' &&
+            item.attributes?.featured === true &&
+            item.attributes?.visible_in_church_center === true
+          )
+          .map(item => [String(item.id), item])
+      );
+
+      const now = Date.now();
+
+      const events = (payload.data || [])
+        .filter(instance => {
+          const eventId =
+            instance.relationships?.event?.data?.id;
+
+          return featuredEvents.has(String(eventId));
+        })
+        .map(instance => {
+          const a = instance.attributes || {};
+          const eventId =
+            instance.relationships?.event?.data?.id;
+          const event = featuredEvents.get(String(eventId));
+          const details = event?.attributes || {};
+
+          return {
+            id: instance.id,
+            name: a.name || details.name || 'Evento',
+            startsAt: a.published_starts_at || a.starts_at,
+            endsAt: a.published_ends_at || a.ends_at,
+            location: a.location || '',
+            url: a.church_center_url ||
+              'https://iddpmi093.churchcenter.com/calendar',
+            image: a.image_url || details.image_url || '',
+            description: details.summary || ''
+          };
+        })
+        .filter(event =>
+          event.startsAt &&
+          new Date(event.startsAt).getTime() >= now
+        )
+        .sort((a, b) =>
+          new Date(a.startsAt) - new Date(b.startsAt)
+        )
+        .slice(0, 3);
+
+      return json(res, 200, { events });
+
+    } catch (e) {
+      console.error('Featured events error:', e.message);
+
+      return json(res, 502, {
+        events: [],
+        error: 'Featured events temporarily unavailable'
+      });
+    }
+  }
+
   return json(res, 404, {error:'Not found'});
 }
 
