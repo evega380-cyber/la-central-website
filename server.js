@@ -94,6 +94,37 @@ function mapRegistration(item) {
 
 async function api(req, res, url) {
 
+if (url.pathname === "/api/planning-center/website-category-test") {
+  try {
+    const payload = await pcoFetch(
+      "/registrations/v2/signups/3946980/categories"
+    );
+
+    const categories = (payload.data || []).map(item => ({
+      id: item.id,
+      name: item.attributes?.name || "",
+      type: item.type
+    }));
+
+    return json(res, 200, {
+      registrationId: "3946980",
+      categories,
+      isWebsiteFeatured: categories.some(
+        category =>
+          category.name.trim().toLowerCase() === "website"
+      )
+    });
+
+  } catch (error) {
+    console.error("Website category test:", error.message);
+
+    return json(res, 502, {
+      error: "Unable to retrieve registration categories",
+      status: error.status || null
+    });
+  }
+}
+
   // SERVER HEALTH
 
   if (url.pathname === "/api/health") {
