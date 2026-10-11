@@ -634,4 +634,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initializeRegistrationSlideshow();
 
+   
+/* =========================================
+   MINISTERIOS Y RECURSOS DROPDOWN
+   ========================================= */
+
+const ministryDropdown = document.querySelector(".nav-dropdown");
+const dropdownToggle = document.querySelector(".dropdown-toggle");
+
+if (ministryDropdown && dropdownToggle) {
+
+  function closeMinistryDropdown() {
+    ministryDropdown.classList.remove("open");
+    dropdownToggle.setAttribute("aria-expanded", "false");
+  }
+
+  dropdownToggle.addEventListener("click", () => {
+    const isOpen = ministryDropdown.classList.toggle("open");
+    dropdownToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  // Close when clicking outside the dropdown.
+  document.addEventListener("click", (event) => {
+    if (!ministryDropdown.contains(event.target)) {
+      closeMinistryDropdown();
+    }
+  });
+
+  // Close when pressing Escape.
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMinistryDropdown();
+      dropdownToggle.blur();
+    }
+  });
+
+  // Close when selecting a page.
+  ministryDropdown.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      closeMinistryDropdown();
+
+      if (menu && nav) {
+        menu.classList.remove("open");
+        menu.setAttribute("aria-expanded", "false");
+        menu.textContent = "☰";
+      }
+    });
+  });
+
+  // Close submenu when the mobile navigation closes.
+  if (menu) {
+    menu.addEventListener("click", () => {
+      if (!menu.classList.contains("open")) {
+        closeMinistryDropdown();
+      }
+    });
+  }
+}
+
+   
 });
