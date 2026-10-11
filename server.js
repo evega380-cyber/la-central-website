@@ -30,6 +30,43 @@ async function pcoFetch(endpoint) {
 
 async function api(req, res, url) {
   
+  if (url.pathname === '/api/planning-center/featured-test') {
+    try {
+      const payload = await pcoFetch(
+        '/registrations/v2/signups?per_page=100'
+      );
+
+      const signups = (payload.data || []).map(item => {
+        const a = item.attributes || {};
+
+        return {
+          id: item.id,
+          name: a.name,
+          open: a.open,
+          closed: a.closed,
+          archived: a.archived,
+          openAt: a.open_at,
+          closeAt: a.close_at,
+          availableFields: Object.keys(a),
+          relationships: Object.keys(item.relationships || {})
+        };
+      });
+
+      return json(res, 200, {
+        totalReturned: signups.length,
+        signups
+      });
+
+    } catch (e) {
+      console.error('Featured test error:', e.message);
+
+      return json(res, 502, {
+        error: 'Unable to inspect registration fields'
+      });
+    }
+  }
+
+  
   if (url.pathname === '/api/planning-center/registrations-test') {
     try {
       const payload = await pcoFetch(
