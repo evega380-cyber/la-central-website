@@ -29,6 +29,35 @@ async function pcoFetch(endpoint) {
 }
 
 async function api(req, res, url) {
+  
+  if (url.pathname === '/api/planning-center/registrations-test') {
+    try {
+      const payload = await pcoFetch(
+        '/registrations/v2/signups?per_page=5'
+      );
+
+      const signups = (payload.data || []).map(item => ({
+        id: item.id,
+        name: item.attributes?.name || '',
+        attributes: Object.keys(item.attributes || {})
+      }));
+
+      return json(res, 200, {
+        connected: true,
+        service: 'Planning Center Registrations',
+        signups
+      });
+
+    } catch (e) {
+      console.error('Registrations test error:', e.message);
+
+      return json(res, 502, {
+        connected: false,
+        error: `Registrations API returned ${e.status || 'an error'}`
+      });
+    }
+  }
+
   if (url.pathname === '/api/planning-center/status') {
     try {
       await pcoFetch('/calendar/v2/calendars?per_page=1');
