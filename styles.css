@@ -413,3 +413,25 @@
   border-bottom: 3px solid #ffda24;
   padding-bottom: 5px;
 }
+
+
+/* Family of Faith: approved orange poster-inspired responsive layout */
+.welcome{position:relative;display:block;overflow:hidden;min-height:680px;padding:70px 7vw 72px;background:linear-gradient(110deg,#ff8a08 0%,#ff7900 58%,#f68b34 100%);color:#fff;isolation:isolate}
+.welcome:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 10%,rgba(255,226,133,.4),transparent 40%),linear-gradient(110deg,rgba(255,98,0,.16),transparent);z-index:-1}
+.welcome-content{position:relative;z-index:2;max-width:820px}
+.welcome .eyebrow{font-weight:900;color:#fff;font-size:12px;letter-spacing:.18em}
+.welcome h2{font-family:Anton,Impact,sans-serif;font-size:clamp(64px,8.6vw,132px);font-weight:900;line-height:.88;margin:20px 0 14px;text-shadow:0 4px 18px rgba(100,45,0,.17)}
+.welcome h2 span{color:#ffdb29}.welcome h2 em{color:#fff;font-weight:900}
+.welcome h3{font-size:clamp(23px,3.1vw,43px);line-height:1.06;font-weight:900;color:#fff;margin:10px 0 25px}
+.welcome-services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:720px}
+.welcome-services article{background:#fff;color:#061321;border-radius:20px;min-height:166px;padding:16px 9px;display:flex;align-items:center;flex-direction:column;justify-content:center;text-align:center;box-shadow:0 12px 25px rgba(99,44,0,.13)}
+.welcome-services .service-icon{background:#061b32;color:#ffcf21;border-radius:50%;height:45px;width:45px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;margin-bottom:10px}
+.welcome-services b{font-size:clamp(16px,2vw,23px);font-weight:900}.welcome-services span{font-size:clamp(10px,1vw,13px);font-weight:800}.welcome-services strong{font-size:clamp(20px,2.2vw,28px);font-weight:900}
+.welcome-location{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin:24px 0 18px;color:#fff;font-size:16px}.welcome-location div{display:flex;flex-direction:column}.welcome-location b{font-weight:900}.welcome-location span{font-weight:700}
+.welcome-location a{color:#fff;text-decoration:none;border:2px solid #fff;border-radius:40px;padding:12px 23px;font-size:13px;font-weight:900}
+.welcome-visit-btn{display:inline-flex;align-items:center;justify-content:center;border-radius:40px;background:#ffda25;color:#061321;text-decoration:none;padding:17px 35px;font-size:16px;font-weight:900;box-shadow:0 10px 20px rgba(110,49,0,.15)}
+.welcome-art{position:absolute;right:-7%;top:0;bottom:0;width:48%;opacity:.32;pointer-events:none;background:radial-gradient(ellipse at 50% 75%,#712d17 0%,transparent 65%);mask-image:linear-gradient(to right,transparent,#000 50%)}
+.schedule-compact{padding-top:25px}.schedule-compact .schedule-visit{margin-top:0}
+@media(min-width:1100px){.welcome-content{max-width:760px}.welcome-art{width:43%}}
+@media(max-width:760px){.welcome{padding:56px 5vw 60px;min-height:0}.welcome h2{font-size:clamp(56px,12vw,94px)}.welcome h3{font-size:clamp(21px,5.4vw,34px)}.welcome-services{gap:7px}.welcome-services article{border-radius:13px;min-height:136px;padding:12px 5px}.welcome-services .service-icon{height:36px;width:36px;font-size:19px}.welcome-services b{font-size:15px}.welcome-services span{font-size:9px}.welcome-services strong{font-size:18px}.welcome-location{font-size:13px}.welcome-art{display:none}}
+@media(max-width:360px){.welcome-services{grid-template-columns:1fr}.welcome-services article{min-height:95px}.welcome h2{font-size:51px}}
