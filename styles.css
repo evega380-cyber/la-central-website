@@ -460,3 +460,9 @@
 .vision-grid a{color:#fff;text-decoration:underline;text-decoration-color:#f5cf1b;text-underline-offset:5px}
 .vision-grid b{color:#ffe36e}
 @media(prefers-reduced-motion:reduce){.vision-grid article::before{transition:none}}
+
+/* Individual approved vision card photos; retain current card dimensions and warm yellow grading */
+.vision-grid article:nth-child(1)::before{background-image:url("vision-anuncia.jpg");background-position:center}
+.vision-grid article:nth-child(2)::before{background-image:url("vision-alcanza.jpg");background-position:center}
+.vision-grid article:nth-child(3)::before{background-image:url("vision-restaura.jpg");background-position:center}
+.vision-grid article:nth-child(4)::before{background-image:url("vision-discipula.jpg");background-position:center}
