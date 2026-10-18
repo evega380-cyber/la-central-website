@@ -642,8 +642,8 @@ function serveStatic(req, res, url) {
     // Safari on iPad/iPhone requests video in byte ranges.
     // Without 206 Partial Content, MP4 playback may fail.
     const range = req.headers.range;
-    if (range && /^bytes=\\d*-\\d*$/.test(range)) {
-      const match = /^bytes=(\\d*)-(\\d*)$/.exec(range);
+    if (range && /^bytes=\d*-\d*$/.test(range)) {
+      const match = /^bytes=(\d*)-(\d*)$/.exec(range);
       const startText = match[1];
       const endText = match[2];
       let start;
