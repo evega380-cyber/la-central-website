@@ -387,3 +387,29 @@
   color: var(--yellow);
   font-weight: 800;
 }
+
+/* Una Familia en Fe — approved bright orange treatment */
+.welcome {
+  background: linear-gradient(125deg, #ff8a00 0%, #ff6900 55%, #ed5200 100%);
+  color: #061321;
+}
+.welcome h2,
+.welcome h2 em {
+  color: #ffda24;
+  font-weight: 900;
+  text-shadow: 0 3px 14px rgba(81, 30, 0, .15);
+}
+.welcome .eyebrow {
+  color: #061321;
+  font-weight: 900;
+}
+.welcome p:not(.eyebrow) {
+  color: #061321;
+  font-weight: 800;
+}
+.welcome .text-link {
+  color: #061321;
+  font-weight: 900;
+  border-bottom: 3px solid #ffda24;
+  padding-bottom: 5px;
+}
