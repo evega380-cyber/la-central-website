@@ -202,6 +202,65 @@ if (url.pathname === "/api/planning-center/website-category-test") {
   }
 }
 
+  // EVENTS PAGE: next five open registrations (not limited to homepage category)
+  if (url.pathname === "/api/events-page-registrations") {
+    try {
+      const payload = await pcoFetch("/registrations/v2/signups?per_page=100");
+      const items = (payload.data || []).filter(item => {
+        const a = item.attributes || {};
+        return !a.archived && !a.closed && a.open;
+      }).map(item => {
+        const a = item.attributes || {};
+        return { id:item.id, title:a.name || "", description:a.description || "",
+          image:a.logo_url || null, startsAt:a.starts_at || a.start_date || a.event_start_date || null,
+          url:a.new_registration_url || `https://iddpmi093.churchcenter.com/registrations/events/${item.id}` };
+      }).sort((a,b) => (a.startsAt ? Date.parse(a.startsAt) || Infinity : Infinity) -
+                         (b.startsAt ? Date.parse(b.startsAt) || Infinity : Infinity));
+      return json(res, 200, { registrations: items.slice(0,5) });
+    } catch (error) {
+      console.error("Events page registrations:",error.message);
+      return json(res,502,{registrations:[],error:"Unable to load registrations"});
+    }
+  }
+
+  // EVENTS PAGE: Church Center published Calendar events for a requested month
+  if (url.pathname === "/api/events-page-calendar") {
+    try {
+      const month = url.searchParams.get("month") || "";
+      if (!/^\\d{4}-(0[1-9]|1[0-2])$/.test(month)) return json(res,400,{error:"Invalid month"});
+      const [year,number] = month.split("-").map(Number);
+      const from = `${month}-01T00:00:00`;
+      const to = `${year + (number === 12 ? 1 : 0)}-${String(number === 12 ? 1 : number+1).padStart(2,"0")}-01T00:00:00`;
+      let path = "/calendar/v2/event_instances?per_page=100&order=starts_at&include=event" +
+        "&where[starts_at][gte]=" + encodeURIComponent(from) +
+        "&where[starts_at][lt]=" + encodeURIComponent(to);
+      const instances = [], visible = new Map();
+      let pages = 0;
+      while (path && pages++ < 8) {
+        const payload = await pcoFetch(path);
+        for (const event of payload.included || []) {
+          if (event.type === "Event") visible.set(String(event.id),event.attributes?.visible_in_church_center === true);
+        }
+        instances.push(...(payload.data || []));
+        const next = payload.links?.next;
+        if (next) { const u = new URL(next); path = u.pathname + u.search; } else path = null;
+      }
+      const events = instances.filter(item => visible.get(String(item.relationships?.event?.data?.id)) === true)
+        .filter(item => {
+          const d = item.attributes?.starts_at || "";
+          return d && d.slice(0,7) === month;
+        }).map(item => {
+          const a = item.attributes || {};
+          return {id:item.id,name:a.name || "",startsAt:a.starts_at,endsAt:a.ends_at || null,
+            location:a.location || "",url:a.church_center_url || "https://iddpmi093.churchcenter.com/home"};
+        });
+      return json(res,200,{events});
+    } catch (error) {
+      console.error("Events page calendar:",error.message);
+      return json(res,502,{events:[],error:"Unable to load published calendar"});
+    }
+  }
+
   // SERVER HEALTH
 
   if (url.pathname === "/api/health") {
