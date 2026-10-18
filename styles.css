@@ -381,3 +381,9 @@
     padding: 30px 24px;
   }
 }
+
+/* Welcome headline: La Central yellow, bold on both lines */
+.welcome h2, .welcome h2 em {
+  color: var(--yellow);
+  font-weight: 800;
+}
