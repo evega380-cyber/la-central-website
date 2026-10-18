@@ -9,7 +9,7 @@ if(!items.length){target.innerHTML='<p class="status">No hay inscripciones abier
 target.innerHTML=items.map(item=>{const img=/^https:\/\//i.test(item.image||"")?'<img src="'+escapeHtml(item.image)+'" alt="" loading="lazy">':"";
 return '<article class="reg-card">'+img+'<div class="reg-body"><h3>'+escapeHtml(item.title)+'</h3><p>'+escapeHtml(item.description).replace(/<[^>]*>/g,"").slice(0,260)+'</p><a class="action" href="'+escapeHtml(safeUrl(item.url))+'" target="_blank" rel="noopener noreferrer">INSCRIBIRME →</a></div></article>'}).join("");
 }catch{target.innerHTML='<p class="status">No pudimos cargar las inscripciones. <a class="fallback" href="'+HOME+'" target="_blank" rel="noopener noreferrer">Ver Church Center →</a></p>'}}
-const now=new Date();const eastern=new Intl.DateTimeFormat("en-CA",{timeZone:"America/New_York",year:"numeric",month:"2-digit",day:"2-digit"}).format(now);const [y,m,d]=eastern.split("-").map(Number);
+const now=new Date();const easternParts=new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(now);const easternValues=Object.fromEntries(easternParts.filter(p=>p.type!=="literal").map(p=>[p.type,Number(p.value)]));const {year:y,month:m,day:d}=easternValues;
 let shown=new Date(y,m-1,1);const grid=document.getElementById("calendar-grid"),label=document.getElementById("month-label"),status=document.getElementById("calendar-status");
 function monthKey(date){return date.getFullYear()+"-"+String(date.getMonth()+1).padStart(2,"0")}
 function render(events){const year=shown.getFullYear(),month=shown.getMonth(),start=new Date(year,month,1).getDay(),days=new Date(year,month+1,0).getDate();
