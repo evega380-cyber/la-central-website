@@ -475,3 +475,14 @@
 .footer-socials{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px 24px;margin:20px 0}
 .footer-socials a{color:#f5cf1b;text-decoration:none;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
 .footer-socials a:hover,.footer-socials a:focus-visible{text-decoration:underline}
+
+/* Compact upcoming-events section without changing registration functionality */
+.events{padding-top:58px;padding-bottom:64px}
+.events .section-head h2{font-size:clamp(38px,4.5vw,62px);line-height:1.02;margin:10px 0}
+.events .section-head p{margin-top:10px;margin-bottom:10px}
+.events .registration-slider{max-width:960px;margin-top:24px}
+.events .registration-slides,.events .registration-slide{min-height:300px}
+.events .registration-slide{padding:38px 32px}
+.events .registration-slide h3{font-size:clamp(27px,3.7vw,44px);margin-bottom:12px}
+.events .registration-slide p{margin-bottom:18px}
+@media(max-width:650px){.events{padding-top:42px;padding-bottom:48px}.events .section-head h2{font-size:clamp(36px,9vw,48px)}.events .registration-slides,.events .registration-slide{min-height:290px}.events .registration-slide{padding:34px 20px}}
