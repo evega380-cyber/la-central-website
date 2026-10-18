@@ -92,7 +92,25 @@ function mapRegistration(item) {
   };
 }
 
+function authorizedAdmin(req) {
+  const configured = process.env.LA_CENTRAL_ADMIN_API_KEY;
+  if (!configured || configured.length < 32) return false;
+  const supplied = req.headers["x-la-central-admin-key"];
+  if (typeof supplied !== "string") return false;
+  const crypto = require("crypto");
+  const expected = Buffer.from(configured);
+  const actual = Buffer.from(supplied);
+  return expected.length === actual.length &&
+    crypto.timingSafeEqual(expected, actual);
+}
+
 async function api(req, res, url) {
+  // Diagnostics must never be exposed to anonymous website visitors.
+  if (url.pathname.startsWith("/api/planning-center/") &&
+      !authorizedAdmin(req)) {
+    return json(res, 404, { error: "Not found" });
+  }
+
 
 if (url.pathname === "/api/website-registrations") {
   try {
