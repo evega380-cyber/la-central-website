@@ -445,3 +445,18 @@
 
 /* Consistent gold line icons within existing service cards */
 .welcome-services .service-icon svg{display:block;width:42px;height:42px;max-width:100%;margin:auto;color:inherit}
+
+/* Vision cards: warm yellow photographic treatment, original four-column layout preserved */
+.vision{background:radial-gradient(circle at 95% 0%,rgba(245,207,27,.14),transparent 38%),var(--navy)}
+.vision-grid article{position:relative;isolation:isolate;overflow:hidden;background:#221d0a}
+.vision-grid article::before{content:"";position:absolute;inset:0;z-index:-2;background-image:url("13EF89CF-2EC8-4169-B5D8-DECC0F972F21.png");background-size:cover;background-position:35% center;filter:grayscale(1) sepia(1) saturate(3.2) hue-rotate(345deg) brightness(.83);opacity:.68;transform:scale(1.02);transition:transform .35s ease}
+.vision-grid article::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(34,24,0,.25) 0%,rgba(31,23,0,.72) 50%,rgba(6,19,33,.97) 100%)}
+.vision-grid article:nth-child(2)::before{background-position:52% center}
+.vision-grid article:nth-child(3)::before{background-position:70% center}
+.vision-grid article:nth-child(4)::before{background-position:87% center}
+.vision-grid article:hover::before{transform:scale(1.1)}
+.vision-grid h3{color:#ffdc49;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+.vision-grid p{color:#f0e9d5;text-shadow:0 1px 7px rgba(0,0,0,.55)}
+.vision-grid a{color:#fff;text-decoration:underline;text-decoration-color:#f5cf1b;text-underline-offset:5px}
+.vision-grid b{color:#ffe36e}
+@media(prefers-reduced-motion:reduce){.vision-grid article::before{transition:none}}
