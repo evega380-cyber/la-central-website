@@ -466,3 +466,7 @@
 .vision-grid article:nth-child(2)::before{background-image:url("vision-alcanza.jpg");background-position:center}
 .vision-grid article:nth-child(3)::before{background-image:url("vision-restaura.jpg");background-position:center}
 .vision-grid article:nth-child(4)::before{background-image:url("vision-discipula.jpg");background-position:center}
+
+/* Prayer section: approved golden prayer photo, existing two-column layout retained */
+.prayer-art{background-image:linear-gradient(180deg,rgba(6,19,33,.03),rgba(6,19,33,.22)),url("/necesitas%20oracion.png");background-size:cover;background-position:center center;border:1px solid rgba(245,207,27,.32);box-shadow:0 18px 45px rgba(0,0,0,.22)}
+.prayer-art .cross{display:none}
