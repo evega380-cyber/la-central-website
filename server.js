@@ -229,11 +229,9 @@ if (url.pathname === "/api/planning-center/website-category-test") {
       const month = url.searchParams.get("month") || "";
       if (!/^\\d{4}-(0[1-9]|1[0-2])$/.test(month)) return json(res,400,{error:"Invalid month"});
       const [year,number] = month.split("-").map(Number);
-      const from = `${month}-01T00:00:00`;
-      const to = `${year + (number === 12 ? 1 : 0)}-${String(number === 12 ? 1 : number+1).padStart(2,"0")}-01T00:00:00`;
-      let path = "/calendar/v2/event_instances?per_page=100&order=starts_at&include=event" +
-        "&where[starts_at][gte]=" + encodeURIComponent(from) +
-        "&where[starts_at][lt]=" + encodeURIComponent(to);
+      // Use the existing verified Calendar endpoint query shape. Planning Center
+      // does not accept arbitrary nested date comparisons on event_instances.
+      let path = "/calendar/v2/event_instances?filter=future&order=starts_at&per_page=100&include=event";
       const instances = [], visible = new Map();
       let pages = 0;
       while (path && pages++ < 8) {
