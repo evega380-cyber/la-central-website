@@ -631,26 +631,64 @@ function serveStatic(req, res, url) {
       filePath
     ).toLowerCase();
 
-    res.writeHead(200, {
-      "Content-Type":
-        MIME_TYPES[ext] ||
-        "application/octet-stream",
+    const contentType = MIME_TYPES[ext] || "application/octet-stream";
+    const headers = {
+      "Content-Type": contentType,
       "Cache-Control": "public, max-age=300",
-      "X-Content-Type-Options": "nosniff"
-    });
+      "X-Content-Type-Options": "nosniff",
+      "Accept-Ranges": "bytes"
+    };
 
-    if (req.method === "HEAD") {
-      return res.end();
+    // Safari on iPad/iPhone requests video in byte ranges.
+    // Without 206 Partial Content, MP4 playback may fail.
+    const range = req.headers.range;
+    if (range && /^bytes=\\d*-\\d*$/.test(range)) {
+      const match = /^bytes=(\\d*)-(\\d*)$/.exec(range);
+      const startText = match[1];
+      const endText = match[2];
+      let start;
+      let end;
+
+      if (!startText && !endText) {
+        res.writeHead(416, { ...headers, "Content-Range": `bytes */${stats.size}` });
+        return res.end();
+      }
+
+      if (!startText) {
+        const suffix = Number(endText);
+        start = Math.max(0, stats.size - suffix);
+        end = stats.size - 1;
+      } else {
+        start = Number(startText);
+        end = endText ? Number(endText) : stats.size - 1;
+      }
+
+      if (!Number.isSafeInteger(start) || !Number.isSafeInteger(end) ||
+          start >= stats.size || start > end || start < 0) {
+        res.writeHead(416, { ...headers, "Content-Range": `bytes */${stats.size}` });
+        return res.end();
+      }
+
+      end = Math.min(end, stats.size - 1);
+      res.writeHead(206, {
+        ...headers,
+        "Content-Range": `bytes ${start}-${end}/${stats.size}`,
+        "Content-Length": end - start + 1
+      });
+
+      if (req.method === "HEAD") return res.end();
+
+      const stream = fs.createReadStream(filePath, { start, end });
+      stream.on("error", () => res.destroy());
+      return stream.pipe(res);
     }
 
-    const stream = fs.createReadStream(
-      filePath
-    );
+    res.writeHead(200, { ...headers, "Content-Length": stats.size });
 
-    stream.on("error", () => {
-      res.destroy();
-    });
+    if (req.method === "HEAD") return res.end();
 
+    const stream = fs.createReadStream(filePath);
+    stream.on("error", () => res.destroy());
     stream.pipe(res);
   });
 }
