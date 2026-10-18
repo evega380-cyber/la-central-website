@@ -439,6 +439,6 @@
 
 /* Orange poster brushwork and photograph overlay */
 .welcome:after{content:"";position:absolute;right:-5%;bottom:-7%;width:55%;height:18%;z-index:1;pointer-events:none;transform:rotate(-9deg);background:repeating-linear-gradient(171deg,transparent 0 9px,rgba(255,194,33,.65) 10px 17px,transparent 18px 26px);clip-path:polygon(0 40%,100% 0,100% 80%,0 100%);opacity:.8}
-.welcome-art{right:0;top:0;bottom:0;width:48%;opacity:1;background-image:linear-gradient(90deg,#ff8000 0%,rgba(255,123,0,.2) 40%,rgba(255,115,0,.08) 100%),url("community-family.jpg");background-size:cover;background-position:center 43%;mask-image:linear-gradient(90deg,transparent 0%,#000 24%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 24%)}
+.welcome-art{right:0;top:0;bottom:0;width:48%;opacity:1;background-image:linear-gradient(90deg,#ff8000 0%,rgba(255,123,0,.2) 40%,rgba(255,115,0,.08) 100%),url("13EF89CF-2EC8-4169-B5D8-DECC0F972F21.png");background-size:cover;background-position:center 43%;mask-image:linear-gradient(90deg,transparent 0%,#000 24%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 24%)}
 .welcome-art:before{content:"";position:absolute;right:-15%;top:6%;width:65%;height:18%;border-top:17px solid #ffca29;border-radius:55% 10% 60% 10%;transform:rotate(-13deg);opacity:.9}
 @media(max-width:760px){.welcome-art{display:block;right:-12%;width:85%;opacity:.27;mask-image:linear-gradient(90deg,transparent,#000 45%);-webkit-mask-image:linear-gradient(90deg,transparent,#000 45%)}.welcome:after{width:90%;height:10%;opacity:.5}}
