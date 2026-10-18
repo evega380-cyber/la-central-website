@@ -41,11 +41,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const heroVideo = document.querySelector(".hero-video");
 
   if (heroVideo) {
+    // iPad Safari may not start autoplay until the video is ready or the tab is visible.
+    heroVideo.muted = true;
+    heroVideo.defaultMuted = true;
+    heroVideo.playsInline = true;
+    heroVideo.setAttribute("webkit-playsinline", "");
     heroVideo.playbackRate = 0.72;
+
+    const startHeroVideo = () => {
+      if (document.visibilityState === "hidden") return;
+      const attempt = heroVideo.play();
+      if (attempt && typeof attempt.catch === "function") {
+        attempt.catch(() => {
+          // Safari may still block playback; keep the hero's dark background visible.
+        });
+      }
+    };
 
     heroVideo.addEventListener("loadedmetadata", () => {
       heroVideo.playbackRate = 0.72;
+      startHeroVideo();
     });
+    heroVideo.addEventListener("canplay", startHeroVideo, { once: true });
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) startHeroVideo();
+    });
+    window.addEventListener("pageshow", startHeroVideo);
+    startHeroVideo();
   }
 
 
