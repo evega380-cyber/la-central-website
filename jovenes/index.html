@@ -28,6 +28,58 @@ footer{padding:40px clamp(20px,6vw,90px);display:flex;justify-content:space-betw
 @media(max-width:960px){.about-grid{grid-template-columns:1fr;gap:36px}.objective-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.strategy-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nav-links{gap:12px}}
 @media(max-width:600px){.site-nav{padding:14px 18px}.brand img{width:40px;height:40px}.nav-links{gap:10px;font-size:11px}.nav-links a:nth-child(2){display:none}.nav-cta{padding:9px}.hero{min-height:540px;padding:75px 23px}.hero h1{font-size:clamp(66px,17vw,104px)}.hero h2{font-size:24px}.ticker{gap:10px}.ticker span+span:before{margin-right:10px}.section{padding:70px 0}.objective-grid,.strategy-grid{grid-template-columns:1fr}.objective{min-height:auto;padding:28px}.objective .line{margin-bottom:25px}.purpose{padding:28px;box-shadow:9px 9px 0 #d8e7ed}.gallery-slide img{height:350px}.gallery-shell,.gallery-slide{min-height:320px}.join{padding:60px 0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.gallery-track{transition:none}.btn:hover{transform:none}}
+
+/* Chosen Youth identity — warm neutrals, electric green and vibrant purple. */
+:root{--ink:#25212b;--deep:#eeeae5;--panel:#ffffff;--gold:#85ed38;--blue:#8538e6;--white:#25212b;--muted:#5f5968;--purple:#7629d3;--green:#72d92b;--cream:#f7f5f0}
+body{background:var(--cream);color:var(--ink)}
+.site-nav{background:#f9f7f3;border-bottom:1px solid #ded8e5;box-shadow:0 4px 22px #36274b08}
+.nav-links a:hover,.brand:hover{color:var(--purple)}
+.nav-cta{border-color:var(--purple);color:var(--purple)}
+.hero{background:radial-gradient(ellipse at 80% 25%,#bfa2ef77,transparent 42%),radial-gradient(ellipse at 86% 90%,#b5f68477,transparent 38%),linear-gradient(125deg,#f6f3ed,#eae5e0 65%,#f4f1ec)}
+.hero:before{background:repeating-linear-gradient(90deg,#813ce70e 0 10px,transparent 10px 40px)}
+.hero:after{color:#7629d30b}
+.eyebrow{color:var(--purple)}
+.hero h1{color:#29222e}
+.hero h1 span{color:var(--purple);text-shadow:5px 5px 0 #a5f261}
+.hero h2{color:#4a3d56}
+.hero p.lead{color:#514a59}
+.btn.primary{background:var(--green);color:#1c2216}
+.btn.secondary{border:1px solid var(--purple);color:var(--purple)}
+.btn:focus-visible,.gallery-controls button:focus-visible,a:focus-visible{outline:3px solid var(--purple);outline-offset:4px}
+.ticker{background:var(--purple);color:#fff}
+.ticker span+span:before{color:var(--green)}
+.about{background:#fffefa;color:var(--ink)}
+.about .eyebrow{color:var(--purple)}
+.about .intro{color:#514a59}
+.purpose{background:#efe7fa;border-left:6px solid var(--green);color:#29222e;box-shadow:18px 18px 0 #d6f6c1}
+.purpose h3{color:var(--purple)}
+.objectives{background:#eeeae6}
+.objectives .intro{color:#514a59}
+.objective{background:linear-gradient(160deg,#fffefa,#f6f1fb);border:1px solid #ded4e9;box-shadow:0 12px 25px #493b5a0a}
+.objective:before{color:#7629d310}
+.objective .line{background:var(--green)}
+.objective h3{color:var(--purple)}
+.objective p{color:#514a59}
+.strategies{background:#f8f6f1}
+.strategies .intro{color:#514a59}
+.strategy{background:#fff;border:1px solid #e1dbe5;box-shadow:0 10px 24px #4d39580a}
+.strategy b{color:var(--purple)}
+.strategy:nth-child(even){border-top:4px solid var(--green)}
+.strategy:nth-child(odd){border-top:4px solid var(--purple)}
+.gallery{background:#eee9f2}
+.gallery .intro{color:#514a59}
+.gallery-link{color:var(--purple)}
+.gallery-shell{border:1px solid #d3c4e2;background:radial-gradient(circle at 75% 30%,#c5f8aa,#e9dcf7 62%,#f7f5f0)}
+.gallery-empty strong{color:var(--purple)}
+.gallery-empty p{color:#4c4355}
+.gallery-controls button{border-color:var(--purple);color:var(--purple)}
+.gallery-count{color:#61556d}
+.gallery-caption{color:#fff;background:linear-gradient(transparent,#22192bdc)}
+.join{background:linear-gradient(110deg,#a4f16d,#83e840 48%,#c7f8a5);color:#27212e}
+.join .btn{background:var(--purple);color:#fff}
+footer{background:#28212f;color:#d7cde1}
+footer a:hover{color:var(--green)}
+@media(max-width:600px){.purpose{box-shadow:9px 9px 0 #d6f6c1}.hero h1 span{text-shadow:3px 3px 0 #a5f261}}
 </style>
 </head>
 <body>
