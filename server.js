@@ -205,17 +205,38 @@ if (url.pathname === "/api/planning-center/website-category-test") {
   // EVENTS PAGE: next five open registrations (not limited to homepage category)
   if (url.pathname === "/api/events-page-registrations") {
     try {
-      const payload = await pcoFetch("/registrations/v2/signups?per_page=100");
-      const items = (payload.data || []).filter(item => {
+      const all = [];
+      let nextPath = "/registrations/v2/signups?per_page=100";
+      let pages = 0;
+      while (nextPath && pages++ < 10) {
+        const payload = await pcoFetch(nextPath);
+        all.push(...(payload.data || []));
+        const next = payload.links?.next;
+        if (next) {
+          const u = new URL(next);
+          nextPath = u.pathname + u.search;
+        } else nextPath = null;
+      }
+      const now = Date.now();
+      const items = all.filter(item => {
         const a = item.attributes || {};
-        return !a.archived && !a.closed && a.open;
+        const start = a.starts_at || a.start_date || a.event_start_date || a.first_event_date || null;
+        const timestamp = start ? Date.parse(start) : NaN;
+        return !a.archived && !a.closed && a.open === true &&
+          (!Number.isFinite(timestamp) || timestamp >= now - 86400000);
       }).map(item => {
         const a = item.attributes || {};
         return { id:item.id, title:a.name || "", description:a.description || "",
-          image:a.logo_url || null, startsAt:a.starts_at || a.start_date || a.event_start_date || null,
-          url:a.new_registration_url || `https://iddpmi093.churchcenter.com/registrations/events/${item.id}` };
-      }).sort((a,b) => (a.startsAt ? Date.parse(a.startsAt) || Infinity : Infinity) -
-                         (b.startsAt ? Date.parse(b.startsAt) || Infinity : Infinity));
+          image:a.logo_url || null,
+          startsAt:a.starts_at || a.start_date || a.event_start_date || a.first_event_date || null,
+          url:a.new_registration_url ||
+            `https://iddpmi093.churchcenter.com/registrations/events/${item.id}` };
+      }).sort((a,b) => {
+        const left = a.startsAt ? Date.parse(a.startsAt) : Infinity;
+        const right = b.startsAt ? Date.parse(b.startsAt) : Infinity;
+        return (Number.isFinite(left) ? left : Infinity) -
+          (Number.isFinite(right) ? right : Infinity);
+      });
       return json(res, 200, { registrations: items.slice(0,5) });
     } catch (error) {
       console.error("Events page registrations:",error.message);
