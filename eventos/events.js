@@ -5,9 +5,17 @@ async function registrations(){
 const target=document.getElementById("reg-list");
 try{const response=await fetch("/api/events-page-registrations");if(!response.ok)throw Error("API");
 const data=await response.json(),items=data.registrations||[];
-if(!items.length){target.innerHTML='<p class="status">No hay inscripciones abiertas en este momento.</p>';return}
-target.innerHTML=items.map(item=>{const img=/^https:\/\//i.test(item.image||"")?'<img src="'+escapeHtml(item.image)+'" alt="" loading="lazy">':"";
-return '<article class="reg-card">'+img+'<div class="reg-body"><h3>'+escapeHtml(item.title)+'</h3><p>'+escapeHtml(item.description).replace(/<[^>]*>/g,"").slice(0,260)+'</p><a class="action" href="'+escapeHtml(safeUrl(item.url))+'" target="_blank" rel="noopener noreferrer">INSCRIBIRME →</a></div></article>'}).join("");
+if(!items.length){target.innerHTML='<p class="status">No hay próximas inscripciones disponibles en este momento.</p>';return}
+const dateLabel=value=>{if(!value)return "";const date=new Date(value);return Number.isNaN(date.getTime())?"":new Intl.DateTimeFormat("es-US",{month:"short",day:"numeric",year:"numeric",timeZone:"America/New_York"}).format(date)};
+target.innerHTML=items.map(item=>{
+const img=/^https:\/\//i.test(item.image||"")?'<img src="'+escapeHtml(item.image)+'" alt="" loading="lazy">':"";
+const state=item.status==="open"?"open":item.status==="scheduled"?"scheduled":"closed";
+const statusText=state==="open"?"INSCRIPCIONES ABIERTAS":state==="scheduled"?"PRÓXIMAMENTE":"INSCRIPCIONES CERRADAS";
+const openDate=state==="scheduled"&&item.openAt?'<p class="reg-date">Abre el '+escapeHtml(dateLabel(item.openAt))+'</p>':"";
+const eventDate=item.startsAt?'<p class="reg-date">Fecha: '+escapeHtml(dateLabel(item.startsAt))+'</p>':"";
+const action=state==="open"?'<a class="action" href="'+escapeHtml(safeUrl(item.url))+'" target="_blank" rel="noopener noreferrer">INSCRIBIRME →</a>':'<span class="action inactive" aria-label="Inscripción no disponible">'+(state==="scheduled"?"INSCRIPCIÓN PRÓXIMAMENTE":"INSCRIPCIÓN CERRADA")+'</span>';
+return '<article class="reg-card">'+img+'<div class="reg-body"><span class="reg-badge '+state+'">'+statusText+'</span><h3>'+escapeHtml(item.title)+'</h3>'+eventDate+openDate+'<p>'+escapeHtml(item.description).replace(/&lt;[^&]*&gt;/g,"").slice(0,260)+'</p>'+action+'</div></article>'
+}).join("");
 }catch{target.innerHTML='<p class="status">No pudimos cargar las inscripciones. <a class="fallback" href="'+HOME+'" target="_blank" rel="noopener noreferrer">Ver Church Center →</a></p>'}}
 const now=new Date();const easternParts=new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(now);const easternValues=Object.fromEntries(easternParts.filter(p=>p.type!=="literal").map(p=>[p.type,Number(p.value)]));const {year:y,month:m,day:d}=easternValues;
 let shown=new Date(y,m-1,1);const grid=document.getElementById("calendar-grid"),label=document.getElementById("month-label"),status=document.getElementById("calendar-status");
