@@ -222,13 +222,13 @@ if (url.pathname === "/api/planning-center/website-category-test") {
         const a = item.attributes || {};
         const start = a.starts_at || a.start_date || a.event_start_date || a.first_event_date || null;
         const timestamp = start ? Date.parse(start) : NaN;
-        return !a.archived && !a.closed && a.open === true &&
+        return !a.archived && !a.closed && (a.open === true || (a.open_at && Date.parse(a.open_at) > now)) &&
           (!Number.isFinite(timestamp) || timestamp >= now - 86400000);
       }).map(item => {
         const a = item.attributes || {};
         return { id:item.id, title:a.name || "", description:a.description || "",
           image:a.logo_url || null,
-          startsAt:a.starts_at || a.start_date || a.event_start_date || a.first_event_date || null,
+          startsAt:a.starts_at || a.start_date || a.event_start_date || a.first_event_date || a.open_at || null,
           url:a.new_registration_url ||
             `https://iddpmi093.churchcenter.com/registrations/events/${item.id}` };
       }).sort((a,b) => {
@@ -258,13 +258,13 @@ if (url.pathname === "/api/planning-center/website-category-test") {
       while (path && pages++ < 8) {
         const payload = await pcoFetch(path);
         for (const event of payload.included || []) {
-          if (event.type === "Event") visible.set(String(event.id),event.attributes?.visible_in_church_center === true);
+          if (event.type === "Event") visible.set(String(event.id),event.attributes?.visible_in_church_center !== false && event.attributes?.published !== false);
         }
         instances.push(...(payload.data || []));
         const next = payload.links?.next;
         if (next) { const u = new URL(next); path = u.pathname + u.search; } else path = null;
       }
-      const events = instances.filter(item => visible.get(String(item.relationships?.event?.data?.id)) === true)
+      const events = instances.filter(item => visible.get(String(item.relationships?.event?.data?.id)) !== false)
         .filter(item => {
           const d = item.attributes?.starts_at || "";
           return d && d.slice(0,7) === month;
