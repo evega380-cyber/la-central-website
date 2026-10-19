@@ -227,7 +227,7 @@ if (url.pathname === "/api/planning-center/website-category-test") {
   if (url.pathname === "/api/events-page-calendar") {
     try {
       const month = url.searchParams.get("month") || "";
-      if (!/^\\d{4}-(0[1-9]|1[0-2])$/.test(month)) return json(res,400,{error:"Invalid month"});
+      if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(month)) return json(res,400,{error:"Invalid month"});
       const [year,number] = month.split("-").map(Number);
       // Use the existing verified Calendar endpoint query shape. Planning Center
       // does not accept arbitrary nested date comparisons on event_instances.
