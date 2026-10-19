@@ -220,17 +220,31 @@ if (url.pathname === "/api/planning-center/website-category-test") {
       const now = Date.now();
       const items = all.filter(item => {
         const a = item.attributes || {};
-        const start = a.starts_at || a.start_date || a.event_start_date || a.first_event_date || null;
-        const timestamp = start ? Date.parse(start) : NaN;
-        return !a.archived && !a.closed && (a.open === true || (a.open_at && Date.parse(a.open_at) > now)) &&
+        const eventDate = a.starts_at || a.start_date || a.event_start_date ||
+          a.first_event_date || a.last_event_date || null;
+        const timestamp = eventDate ? Date.parse(eventDate) : NaN;
+        // A closed signup can still be an upcoming event. Exclude archived
+        // registrations and past events when an event date is available.
+        return !a.archived &&
           (!Number.isFinite(timestamp) || timestamp >= now - 86400000);
       }).map(item => {
         const a = item.attributes || {};
-        return { id:item.id, title:a.name || "", description:a.description || "",
-          image:a.logo_url || null,
-          startsAt:a.starts_at || a.start_date || a.event_start_date || a.first_event_date || a.open_at || null,
+        const eventDate = a.starts_at || a.start_date || a.event_start_date ||
+          a.first_event_date || a.last_event_date || null;
+        const opening = a.open_at ? Date.parse(a.open_at) : NaN;
+        const closing = a.close_at ? Date.parse(a.close_at) : NaN;
+        const open = a.open === true && a.closed !== true &&
+          (!Number.isFinite(opening) || opening <= now) &&
+          (!Number.isFinite(closing) || closing > now);
+        return {
+          id:item.id, title:a.name || "", description:a.description || "",
+          image:a.logo_url || null, startsAt:eventDate,
+          openAt:a.open_at || null, closeAt:a.close_at || null,
+          status:open ? "open" : Number.isFinite(opening) && opening > now
+            ? "scheduled" : "closed",
           url:a.new_registration_url ||
-            `https://iddpmi093.churchcenter.com/registrations/events/${item.id}` };
+            `https://iddpmi093.churchcenter.com/registrations/events/${item.id}`
+        };
       }).sort((a,b) => {
         const left = a.startsAt ? Date.parse(a.startsAt) : Infinity;
         const right = b.startsAt ? Date.parse(b.startsAt) : Infinity;
