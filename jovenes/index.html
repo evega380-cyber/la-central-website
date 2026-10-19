@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#061321">
+<meta name="description" content="Jóvenes Escogidos — Chosen Youth. Ministerio juvenil de La Central, Orlando. Una generación comprometida con el evangelio de Jesucristo.">
+<title>Jóvenes Escogidos | Chosen Youth · La Central</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#061321;--deep:#071827;--panel:#10283b;--gold:#f5cf1b;--blue:#119cff;--white:#f7fafc;--muted:#b4c6d5}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,sans-serif}a{color:inherit}button{font:inherit}
+.site-nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px clamp(20px,5vw,76px);background:#061321;border-bottom:1px solid #ffffff19}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-size:12px;font-weight:900;letter-spacing:.08em}.brand img{width:48px;height:48px;object-fit:contain}.nav-links{display:flex;gap:23px;align-items:center;font-size:12px;font-weight:800}.nav-links a{text-decoration:none}.nav-links a:hover,.brand:hover{color:var(--gold)}.nav-cta{border:1px solid var(--gold);padding:12px 17px;border-radius:4px}
+.hero{position:relative;min-height:570px;display:flex;align-items:center;overflow:hidden;padding:95px clamp(24px,8vw,130px) 95px;background:radial-gradient(ellipse at 78% 44%,#19588a88,transparent 40%),linear-gradient(130deg,#081725 0%,#0b2034 65%,#081421)}
+.hero:before{content:"";position:absolute;right:-10vw;top:-90px;width:52vw;height:850px;transform:rotate(19deg);background:repeating-linear-gradient(90deg,#f5cf1b11 0 10px,transparent 10px 40px);pointer-events:none}
+.hero:after{content:"CHOSEN";position:absolute;right:-3vw;bottom:-65px;font:400 clamp(140px,23vw,370px)/1 Anton,Impact,sans-serif;color:#ffffff08;pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:980px}.eyebrow{font-size:11px;letter-spacing:.24em;font-weight:900;color:var(--gold);text-transform:uppercase}.hero h1{font:400 clamp(72px,13vw,180px)/.83 Anton,Impact,sans-serif;letter-spacing:.01em;margin:23px 0 20px}.hero h1 span{display:block;color:var(--gold)}.hero h2{font:400 clamp(22px,3vw,37px)/1.1 Anton,Impact,sans-serif;margin:0 0 25px;color:#dbe7f0}.hero p.lead{max-width:720px;font-size:clamp(15px,1.55vw,19px);line-height:1.7;color:#d0dce5}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:14px 20px;font-size:12px;font-weight:900;letter-spacing:.07em;text-decoration:none;border-radius:4px}.btn.primary{background:var(--gold);color:var(--ink)}.btn.secondary{border:1px solid #ffffff80;color:#fff}.btn:hover{transform:translateY(-2px)}
+.ticker{display:flex;gap:clamp(10px,4vw,55px);justify-content:center;align-items:center;flex-wrap:wrap;padding:20px;background:var(--gold);color:var(--ink);font:400 clamp(16px,2.4vw,27px) Anton,Impact,sans-serif;letter-spacing:.04em}.ticker span+span:before{content:"✦";font:12px Inter,sans-serif;margin-right:clamp(10px,4vw,55px)}
+.container{max-width:1240px;margin:auto;padding:0 25px}.section{padding:96px 0}.section h2{font:400 clamp(42px,6vw,80px)/.96 Anton,Impact,sans-serif;margin:12px 0 26px}.section .intro{font-size:16px;line-height:1.85;color:var(--muted);max-width:790px}.about{background:#f3f6f7;color:var(--ink)}.about .eyebrow{color:#0a6cb0}.about .intro{color:#3d5567}.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}.purpose{background:#071b2b;border-left:6px solid var(--gold);padding:36px 38px;color:white;box-shadow:18px 18px 0 #d8e7ed}.purpose h3{font:400 32px Anton,Impact,sans-serif;color:var(--gold);margin:0 0 16px}.purpose p{font-size:17px;line-height:1.75;margin:0}
+.objectives{background:#071421}.objectives .intro{margin-bottom:36px}.objective-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}.objective{background:linear-gradient(160deg,#0e2b42,#0a1c2d);padding:30px 25px;min-height:330px;border:1px solid #25425b;position:relative;overflow:hidden}.objective:before{content:attr(data-num);font:400 112px Anton,Impact,sans-serif;position:absolute;right:5px;top:-28px;color:#ffffff0b}.objective .line{width:42px;height:4px;background:var(--gold);margin-bottom:44px}.objective h3{font:400 clamp(26px,3vw,39px)/1 Anton,Impact,sans-serif;margin:0 0 19px;color:var(--gold)}.objective p{font-size:14px;line-height:1.8;color:#c8d8e3;margin:0;position:relative}
+.strategies{background:#0b2235}.strategy-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:34px}.strategy{background:#ffffff0a;border:1px solid #ffffff21;padding:32px;min-height:150px;display:flex;flex-direction:column;gap:18px}.strategy b{font:400 46px Anton,Impact,sans-serif;color:var(--gold)}.strategy h3{font-size:17px;margin:0;font-weight:800}
+.gallery{background:#061321}.gallery-head{display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap}.gallery .intro{margin:0 0 25px}.gallery-link{color:var(--gold);text-decoration:none;font-weight:800;font-size:13px}.gallery-shell{margin-top:32px;position:relative;border:1px solid #2c485e;background:radial-gradient(circle at 70% 40%,#16436a,#0a1d2e 70%);min-height:350px;overflow:hidden}.gallery-track{display:flex;transition:transform .55s ease;will-change:transform}.gallery-slide{flex:0 0 100%;min-height:350px;position:relative;display:flex;align-items:center;justify-content:center}.gallery-slide img{width:100%;height:450px;object-fit:cover;display:block}.gallery-caption{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,#061321e8);padding:65px 30px 26px;font-weight:800}.gallery-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding:60px 24px}.gallery-empty strong{font:400 clamp(36px,6vw,75px) Anton,Impact,sans-serif;color:var(--gold)}.gallery-empty p{max-width:550px;color:#c8d8e3;line-height:1.7;margin:0}.gallery-controls{display:flex;align-items:center;justify-content:space-between;margin-top:16px;gap:16px}.gallery-controls button{border:1px solid #647c8e;background:transparent;color:white;border-radius:50%;width:44px;height:44px;cursor:pointer;font-size:20px}.gallery-controls button:disabled{opacity:.3;cursor:default}.gallery-count{font-size:12px;letter-spacing:.12em;color:var(--muted)}
+.join{background:linear-gradient(115deg,#f5cf1b,#ffd953);color:var(--ink);padding:78px 0}.join-grid{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}.join h2{font:400 clamp(46px,7vw,86px)/.9 Anton,Impact,sans-serif;margin:0 0 15px}.join p{line-height:1.7;max-width:640px;margin:0}.join .btn{background:var(--ink);color:#fff}
+footer{padding:40px clamp(20px,6vw,90px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;background:#040e18;color:#aebfca;font-size:12px}footer a{text-decoration:none;color:#fff;font-weight:800}footer a:hover{color:var(--gold)}
+@media(max-width:960px){.about-grid{grid-template-columns:1fr;gap:36px}.objective-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.strategy-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nav-links{gap:12px}}
+@media(max-width:600px){.site-nav{padding:14px 18px}.brand img{width:40px;height:40px}.nav-links{gap:10px;font-size:11px}.nav-links a:nth-child(2){display:none}.nav-cta{padding:9px}.hero{min-height:540px;padding:75px 23px}.hero h1{font-size:clamp(66px,17vw,104px)}.hero h2{font-size:24px}.ticker{gap:10px}.ticker span+span:before{margin-right:10px}.section{padding:70px 0}.objective-grid,.strategy-grid{grid-template-columns:1fr}.objective{min-height:auto;padding:28px}.objective .line{margin-bottom:25px}.purpose{padding:28px;box-shadow:9px 9px 0 #d8e7ed}.gallery-slide img{height:350px}.gallery-shell,.gallery-slide{min-height:320px}.join{padding:60px 0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.gallery-track{transition:none}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<header class="site-nav">
+<a class="brand" href="/" aria-label="Regresar a La Central"><img src="/cg-logo.png" alt=""> <span>LA CENTRAL</span></a>
+<nav class="nav-links" aria-label="Navegación"><a href="#proposito">Propósito</a><a href="#objetivos">Objetivos</a><a href="#momentos">Momentos</a><a class="nav-cta" href="/">VOLVER AL INICIO ↗</a></nav>
+</header>
+<main>
+<section class="hero" aria-labelledby="youth-title">
+<div class="hero-inner"><p class="eyebrow">LA CENTRAL · MINISTERIO JUVENIL</p>
+<h1 id="youth-title">JÓVENES<span>ESCOGIDOS.</span></h1>
+<h2>CHOSEN YOUTH</h2>
+<p class="lead">El Ministerio compuesto por jóvenes llamados y escogidos por Dios, movidos por la necesidad de crecer espiritualmente a desarrollarse en forma integral, fundamentados en los principios cristianos de santidad, justicia, tolerancia, amor y honestidad; a fin de alcanzar la juventud para Cristo.</p>
+<div class="btn-row"><a class="btn primary" href="#proposito">CONOCE NUESTRA MISIÓN ↓</a><a class="btn secondary" href="https://www.instagram.com/_chosen_youth_/" target="_blank" rel="noopener noreferrer">SÍGUENOS EN INSTAGRAM ↗</a></div>
+</div></section>
+<div class="ticker" aria-label="Visión de La Central"><span>ANUNCIA</span><span>ALCANZA</span><span>RESTAURA</span><span>DISCIPULA</span></div>
+<section class="section about" id="proposito"><div class="container about-grid">
+<div><p class="eyebrow">NUESTRA IDENTIDAD</p><h2>UNA GENERACIÓN<br>CON PROPÓSITO.</h2><p class="intro">Somos Jóvenes Escogidos, una comunidad que busca crecer en la fe, desarrollar su vida integral y alcanzar a otros jóvenes para Cristo.</p></div>
+<div class="purpose"><h3>PROPÓSITO DE EXISTENCIA</h3><p>Levantar una generación comprometida con el evangelio de Jesucristo para alcanzar la juventud del mundo entero para el reino de Dios.</p></div>
+</div></section>
+<section class="section objectives" id="objetivos"><div class="container"><p class="eyebrow">NUESTRO LLAMADO</p><h2>CUATRO OBJETIVOS.<br>UNA MISIÓN.</h2>
+<div class="objective-grid">
+<article class="objective" data-num="01"><div class="line"></div><h3>ANUNCIAR</h3><p>Promover el mejoramiento espiritual, moral, intelectual, ético, social y emocional de la juventud Pentecostal.</p></article>
+<article class="objective" data-num="02"><div class="line"></div><h3>ALCANZAR</h3><p>Promoviendo a través de la juventud la verdadera vida de Dios, la cual nos prepara para el tiempo que vivimos y también para el futuro.</p></article>
+<article class="objective" data-num="03"><div class="line"></div><h3>RESTAURAR</h3><p>Que cada joven alcance una restauración integral a través del poder del Espíritu Santo de Dios.</p></article>
+<article class="objective" data-num="04"><div class="line"></div><h3>DISCIPULAR</h3><p>Preparar discípulos que ministren con poder el mensaje del Reino de Dios a cada joven necesitado dentro y fuera del evangelio.</p></article>
+</div></div></section>
+<section class="section strategies" id="estrategias"><div class="container"><p class="eyebrow">CÓMO LO VIVIMOS</p><h2>NUESTRAS ESTRATEGIAS.</h2><p class="intro">Crecemos juntos, fortalecemos nuestra fe y creamos espacios para conectar, servir y compartir el evangelio.</p>
+<div class="strategy-grid">
+<article class="strategy"><b>01</b><h3>Seguimiento y apoyo</h3></article>
+<article class="strategy"><b>02</b><h3>Congreso de Jóvenes</h3></article>
+<article class="strategy"><b>03</b><h3>Campamentos</h3></article>
+<article class="strategy"><b>04</b><h3>Célula de confraternización</h3></article>
+<article class="strategy"><b>05</b><h3>Talleres/Conferencias</h3></article>
+<article class="strategy"><b>06</b><h3>Noche de talentos</h3></article>
+</div></div></section>
+<section class="section gallery" id="momentos"><div class="container">
+<div class="gallery-head"><div><p class="eyebrow">VIDA EN COMUNIDAD</p><h2>MOMENTOS<br>CHOSEN YOUTH.</h2><p class="intro">Mira lo que Dios está haciendo en nuestra juventud.</p></div><a class="gallery-link" href="https://www.instagram.com/_chosen_youth_/" target="_blank" rel="noopener noreferrer">VER NUESTRO INSTAGRAM ↗</a></div>
+<div class="gallery-shell" aria-label="Galería de fotos del ministerio juvenil"><div class="gallery-track" id="gallery-track"><div class="gallery-slide gallery-empty"><div><strong>NUESTROS MOMENTOS.</strong><p>Explora las fotos y experiencias de Jóvenes Escogidos en nuestro Instagram.</p><div class="btn-row" style="justify-content:center"><a class="btn primary" href="https://www.instagram.com/_chosen_youth_/" target="_blank" rel="noopener noreferrer">VER FOTOS EN INSTAGRAM ↗</a></div></div></div></div></div>
+<div class="gallery-controls"><div><button id="gallery-prev" aria-label="Foto anterior" disabled>‹</button> <button id="gallery-next" aria-label="Foto siguiente" disabled>›</button></div><span class="gallery-count" id="gallery-count">INSTAGRAM · @_chosen_youth_</span></div>
+</div></section>
+<section class="join"><div class="container join-grid"><div><h2>TÚ TAMBIÉN<br>ERES PARTE.</h2><p>Conoce a Jóvenes Escogidos y mantente conectado con nuestras actividades y momentos juntos.</p></div><a class="btn" href="https://www.instagram.com/_chosen_youth_/" target="_blank" rel="noopener noreferrer">CONECTA CON CHOSEN YOUTH ↗</a></div></section>
+</main>
+<footer><a href="/">← LA CENTRAL</a><span>1131 N. Goldenrod Rd., Orlando, FL 32807</span><span>UNA IGLESIA QUE ANUNCIA · ALCANZA · RESTAURA · DISCIPULA</span></footer>
+<script src="/jovenes/gallery.js?v=1" defer></script>
+</body></html>
