@@ -490,3 +490,16 @@
 /* Half-height homepage hero; preserve the video and headline. */
 @media(min-width:701px){.hero{min-height:52svh;padding:112px 7vw 75px}.hero h1{font-size:clamp(48px,5.2vw,78px);margin:8px 0 12px}.hero .lead{font-size:clamp(14px,1.2vw,17px);line-height:1.45}.hero-service{margin-top:12px}.hero .actions{margin-top:18px}}
 @media(max-width:700px){.hero{min-height:52svh;padding:110px 24px 78px}.hero h1{font-size:clamp(42px,9vw,62px);margin:8px 0 12px}.hero .lead{font-size:15px;line-height:1.45}.hero-service{margin-top:12px}.hero .actions{margin-top:16px}.vision-strip{padding:10px 3vw;font-size:15px;gap:12px}}
+
+
+/* Four words, four identities. Keep the approved photos, zoom hover, dimensions and legibility. */
+.vision-grid article:nth-child(1){--vision-accent:#ffdc49;--vision-overlay:rgba(31,23,0,.76);--vision-filter:grayscale(1) sepia(1) saturate(3.2) hue-rotate(345deg) brightness(.83);background:#221d0a}
+.vision-grid article:nth-child(2){--vision-accent:#8ce69b;--vision-overlay:rgba(5,43,26,.80);--vision-filter:grayscale(1) sepia(1) saturate(3) hue-rotate(75deg) brightness(.9);background:#0d3022}
+.vision-grid article:nth-child(3){--vision-accent:#c7a2ff;--vision-overlay:rgba(39,19,64,.83);--vision-filter:grayscale(1) sepia(1) saturate(3) hue-rotate(195deg) brightness(.88);background:#29183e}
+.vision-grid article:nth-child(4){--vision-accent:#ff9b9b;--vision-overlay:rgba(73,17,26,.82);--vision-filter:grayscale(1) sepia(1) saturate(3.1) hue-rotate(300deg) brightness(.88);background:#431c24}
+.vision-grid article::before{filter:var(--vision-filter)}
+.vision-grid article::after{background:linear-gradient(180deg,rgba(6,19,33,.24) 0%,var(--vision-overlay) 52%,rgba(6,19,33,.97) 100%)}
+.vision-grid article h3{color:var(--vision-accent);text-shadow:0 2px 12px rgba(0,0,0,.72)}
+.vision-grid article b{color:var(--vision-accent)}
+.vision-grid article p{color:#f5f7f8;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+.vision-grid article a{text-decoration-color:var(--vision-accent);text-shadow:0 1px 6px rgba(0,0,0,.75)}
