@@ -503,3 +503,26 @@
 .vision-grid article b{color:var(--vision-accent)}
 .vision-grid article p{color:#f5f7f8;text-shadow:0 1px 8px rgba(0,0,0,.8)}
 .vision-grid article a{text-decoration-color:var(--vision-accent);text-shadow:0 1px 6px rgba(0,0,0,.75)}
+
+
+/* Compact four-word vision on phones: all four cards in a 2 × 2 view.
+   Preserve individual photography, color grading, dark overlays and zoom effects. */
+@media(max-width:600px){
+  .vision{padding:30px 14px 32px}
+  .vision .section-head .eyebrow{font-size:10px;margin:0 0 7px}
+  .vision .section-head h2{font-size:clamp(29px,8vw,40px);line-height:1.04;margin:0}
+  .vision-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:16px;border:0}
+  .vision-grid article{min-width:0;min-height:220px;padding:14px 11px 12px;border:1px solid #31404e;display:flex;flex-direction:column}
+  .vision-grid article:last-child{border:1px solid #31404e}
+  .vision-grid b{font-size:10px;line-height:1.2}
+  .vision-grid h3{font-size:clamp(21px,5.5vw,29px);line-height:1.05;margin:11px 0 7px;overflow-wrap:normal}
+  .vision-grid p{font-size:11px;line-height:1.4;margin:0 0 10px}
+  .vision-grid a{font-size:10px;line-height:1.35;margin-top:auto;overflow-wrap:anywhere}
+}
+@media(max-width:350px){
+  .vision{padding-left:10px;padding-right:10px}
+  .vision-grid{gap:6px}
+  .vision-grid article{padding:11px 8px 10px;min-height:225px}
+  .vision-grid h3{font-size:21px}
+  .vision-grid p{font-size:10.5px;line-height:1.35}
+}
